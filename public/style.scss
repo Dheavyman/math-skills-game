@@ -1,0 +1,30 @@
+.label {
+  margin-top: 1.5rem;
+}
+.fa-star {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+.number {
+  span {
+    background-color: #cccccc;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0.5rem;
+    text-align: center;
+    width: 1.5rem;
+  }
+
+  .selected {
+    background-color: #eee;
+    color: #ddd;
+    cursor: not-allowed;
+  }
+
+  .used {
+    background-color: #aaddaa;
+    color: #99bb99;
+    cursor: not-allowed;
+  }
+}
