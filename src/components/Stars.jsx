@@ -1,13 +1,18 @@
-
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  numberOfStars: PropTypes.number.isRequired
+};
 
 /**
  * Stars component
  *
+ * @param {object} props - Properties passed to component
  * @returns {object} React element
  */
-const Stars = () => {
-  const numberOfStars = 1 + Math.floor(Math.random() * 9);
+const Stars = (props) => {
+  const { numberOfStars } = props;
 
   return (
     <div className="col-5">
@@ -19,5 +24,7 @@ const Stars = () => {
     </div>
   );
 };
+
+Stars.propTypes = propTypes;
 
 export default Stars;
