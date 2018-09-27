@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   selectedNumbers: PropTypes.arrayOf(PropTypes.number).isRequired,
+  usedNumbers: PropTypes.arrayOf(PropTypes.number).isRequired,
   handleSelectNumber: PropTypes.func.isRequired
 };
 
@@ -12,20 +13,27 @@ const arrayOfNumbers = Array.from({ length: 9 }, (_, index) => index + 1);
  * Numbers component
  *
  * @param {object} props - Properties passed to component
+ *
  * @returns {object} React element
  */
 const Numbers = (props) => {
-  const { selectedNumbers, handleSelectNumber } = props;
+  const { selectedNumbers, usedNumbers, handleSelectNumber } = props;
 
   /**
    * Add class name to change the color of each number when selected
    *
    * @param {*} number - Number selected
+   *
    * @returns {string} Selected or empty string
    */
-  const numberClassName = number => (
-    selectedNumbers.includes(number) ? 'selected' : ''
-  );
+  const numberClassName = (number) => {
+    if (selectedNumbers.includes(number)) {
+      return 'selected';
+    }
+    if (usedNumbers.includes(number)) {
+      return 'used';
+    }
+  };
   return (
     <div className="card text-center mt-5">
       <div className="number">

@@ -9,6 +9,7 @@ const propTypes = {
  * Stars component
  *
  * @param {object} props - Properties passed to component
+ *
  * @returns {object} React element
  */
 const Stars = (props) => {
