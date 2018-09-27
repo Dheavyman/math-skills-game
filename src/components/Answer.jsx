@@ -11,6 +11,7 @@ const propTypes = {
  * Answer component
  *
  * @param {object} props - Properties passed to component
+ *
  * @returns {object} React element
  */
 const Answer = (props) => {
