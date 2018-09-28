@@ -67,7 +67,7 @@ const Button = (props) => {
       );
   }
   return (
-    <div className="col-2 text-center">
+    <div className="col-2 check-btn text-center">
       {button}
       <br />
       <br />
@@ -77,7 +77,7 @@ const Button = (props) => {
         onClick={handleRedraw}
         disabled={redraws <= 0}
       >
-        <i className="fa fa-sync-alt fa-spin" />
+        <i className={`fa fa-sync-alt ${redraws > 0 && 'fa-spin'}`} />
         {`  ${redraws}`}
       </button>
     </div>

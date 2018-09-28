@@ -34,8 +34,22 @@ const Numbers = (props) => {
       return 'used';
     }
   };
+
+  /**
+   * Handle unselecting a number with enter key
+   *
+   * @param {object} event - Event object
+   * @param {object} number - Number to unselect
+   *
+   * @returns {object} Unselects the number if enter key is pressed
+   */
+  const handleKeyUP = (event, number) => {
+    if (event.key === 'Enter') {
+      handleSelectNumber(number);
+    }
+  };
   return (
-    <div className="card text-center mt-5">
+    <div className="card border-primary text-center mt-5">
       <div className="number">
         {arrayOfNumbers.map((number, index) => (
           <span
@@ -44,7 +58,7 @@ const Numbers = (props) => {
             key={index.toString()}
             className={numberClassName(number)}
             onClick={() => handleSelectNumber(number)}
-            onKeyUp={() => {}}
+            onKeyUp={event => handleKeyUP(event, number)}
           >
             {number}
           </span>

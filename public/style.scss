@@ -1,14 +1,20 @@
 .label {
+  font-family: 'Rufina', serif;
   margin-top: 1.5rem;
 }
 
 .fa-star {
+  color: #0074D9;
   font-size: 1.5rem;
   margin: 0.5rem;
 }
 
 .fa-sync-alt {
   color: #008000
+}
+
+.check-btn {
+  padding: 0;
 }
 
 .number {
@@ -33,8 +39,22 @@
     color: #99bb99;
     cursor: not-allowed;
   }
+
+  .answer {
+    background-color: #99bb99;
+  }
 }
 
 button:disabled {
   cursor: not-allowed;
+}
+
+.how-to-play {
+  li {
+    margin-top: 10px;
+  }
+
+  h4 {
+    background-color: #e1f5fe;
+  }
 }
