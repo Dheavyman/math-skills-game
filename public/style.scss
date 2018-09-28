@@ -1,6 +1,9 @@
-.label {
-  font-family: 'Rufina', serif;
+.header {
   margin-top: 1.5rem;
+
+  .logo {
+    font-family: 'Rufina', serif;
+  }
 }
 
 .fa-star {
@@ -51,10 +54,22 @@ button:disabled {
 
 .how-to-play {
   li {
-    margin-top: 10px;
+    margin-top: 0.625rem;
   }
 
   h4 {
     background-color: #e1f5fe;
+  }
+
+  mark {
+    background-color: #5A6268;
+    color: #ffffff;
+  }
+}
+
+.timer {
+  .minutes, .seconds {
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-right: 0.3125rem;
   }
 }

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-import Stars from './Stars';
-import Button from './Button';
-import Answer from './Answer';
-import Numbers from './Numbers';
-import DoneFrame from './DoneFrame';
+import StartFrame from './StartFrame';
+import GameFrame from './GameFrame';
 import HowToPlay from './HowToPlay';
+import TimerFrame from './TimerFrame';
 import possibleCombinationSum from '../helpers/possibleCombinationSum';
 
 /**
@@ -43,9 +41,42 @@ class Game extends Component {
     isAnswerCorrect: null,
     redraws: 5,
     doneStatus: null,
+    isFirstGame: true,
+    timeSpent: 1,
+    countdownRunning: false,
+    minutes: 1,
+    seconds: 0,
   })
 
   state = Game.initialState();
+
+  /**
+   * Handle starting the game
+   *
+   * @returns {undefined} Change state
+   *
+   * @memberof Game
+   */
+  handleStartGame = () => {
+    this.startCountdown();
+    this.setState({
+      isFirstGame: false,
+      numberOfStars: Game.randomNumber(),
+    });
+  }
+
+  /**
+   * Handle reset application state
+   *
+   * @returns {object} New state
+   *
+   * @memberof Game
+   */
+  handleResetGame = () => this.setState({
+    ...Game.initialState(),
+    isFirstGame: false,
+    countdownRunning: true,
+  }, this.startCountdown);
 
   /**
    * Handle select number event
@@ -112,7 +143,7 @@ class Game extends Component {
       selectedNumbers: [],
       isAnswerCorrect: null,
       numberOfStars: Game.randomNumber(),
-    }), this.handleUpdateDoneStatus);
+    }), this.updateDoneStatus);
   }
 
   /**
@@ -130,7 +161,8 @@ class Game extends Component {
         selectedNumbers: [],
         isAnswerCorrect: null,
         numberOfStars: Game.randomNumber(),
-      }), this.handleUpdateDoneStatus);
+        countdownRunning: true,
+      }), this.updateDoneStatus);
     }
   }
 
@@ -149,36 +181,92 @@ class Game extends Component {
   }
 
   /**
-   * Handle updating the status of the game for win or lose
+   * Update the status of the game for win or lose
    *
    * @returns {object} New state
    *
    * @memberof Game
    */
-  handleUpdateDoneStatus = () => {
+  updateDoneStatus = () => {
     this.setState((prevState) => {
       if (prevState.usedNumbers.length === 9) {
         return {
-          doneStatus: 'Done, Nice!'
+          doneStatus: 'Done, Nice!',
+          countdownRunning: false,
         };
       }
       if (prevState.redraws === 0 && !this.possibleSolutions(prevState)) {
         return {
-          doneStatus: 'Game Over!'
+          doneStatus: 'Game Over!',
+          countdownRunning: false,
+        };
+      }
+      if (!prevState.countdownRunning) {
+        return {
+          doneStatus: 'Time Up!',
         };
       }
     });
   }
 
   /**
-   * Handle reset application state
+   * Start the countdown timer when game starts
    *
-   * @returns {object} New state
+   * @returns {undefined} Start countdown
    *
    * @memberof Game
    */
-  handleResetGame = () => this.setState(Game.initialState());
+  startCountdown = () => {
+    clearInterval(this.countdown);
+    const { minutes, seconds } = this.state;
+    const countdownTime = (minutes * 60) + seconds;
+    this.countdown = setInterval(() => {
+      this.calculateTimeRemaining(countdownTime);
+    }, 1000);
+  }
 
+  /**
+   * Calculate remaining time
+   *
+   * @param {number} countdownTime - Set time to countdown
+   *
+   * @returns {undefined} Change state to reflect new time
+   *
+   * @memberof Game
+   */
+  calculateTimeRemaining = (countdownTime) => {
+    const { timeSpent, doneStatus } = this.state;
+    const timeRemaining = countdownTime - timeSpent;
+
+    if (!doneStatus && timeRemaining >= 0) {
+      const minutes = Math.floor(timeRemaining / 60);
+      const seconds = timeRemaining - (minutes * 60);
+
+      this.setState(prevState => ({
+        minutes,
+        seconds,
+        countdownRunning: true,
+        timeSpent: prevState.timeSpent + 1,
+      }));
+    } else {
+      this.stopCountdown();
+      this.updateDoneStatus();
+    }
+  };
+
+  /**
+   * Stop count down
+   *
+   * @returns {undefined} Cancel setInterval action
+   *
+   * @memberof Game
+   */
+  stopCountdown = () => {
+    this.setState({
+      countdownRunning: false
+    });
+    clearInterval(this.countdown);
+  }
 
   /**
    * Render method
@@ -188,50 +276,24 @@ class Game extends Component {
    * @memberof Game
    */
   render() {
-    const {
-      selectedNumbers,
-      usedNumbers,
-      redraws,
-      isAnswerCorrect,
-      numberOfStars,
-      doneStatus
-    } = this.state;
+    const { isFirstGame, minutes, seconds } = this.state;
     return (
       <div className="container">
-        <h2 className="label">Play Nine</h2>
-        <hr />
-        <div className="row mt-5">
-          <Stars numberOfStars={numberOfStars} />
-          <Button
-            selectedNumbers={selectedNumbers}
-            isAnswerCorrect={isAnswerCorrect}
-            redraws={redraws}
-            handleCheckAnswer={this.handleCheckAnswer}
-            handleAcceptAnswer={this.handleAcceptAnswer}
-            handleRedraw={this.handleRedraw}
-          />
-          <Answer
-            selectedNumbers={selectedNumbers}
-            handleUnselectNumber={this.handleUnselectNumber}
-          />
+        <div className="row header">
+          <h2 className="col-8 col-md-9 logo">Play Nine</h2>
+          <TimerFrame minutes={minutes} seconds={seconds} />
         </div>
-        <br />
-        <br />
-        {doneStatus
-          ? (
-            <DoneFrame
-              doneStatus={doneStatus}
-              handleResetGame={this.handleResetGame}
-            />
-          )
-          : (
-            <Numbers
-              selectedNumbers={selectedNumbers}
-              usedNumbers={usedNumbers}
-              handleSelectNumber={this.handleSelectNumber}
-            />
-          )
-        }
+        <hr />
+        <GameFrame
+          handleCheckAnswer={this.handleCheckAnswer}
+          handleAcceptAnswer={this.handleAcceptAnswer}
+          handleRedraw={this.handleRedraw}
+          handleUnselectNumber={this.handleUnselectNumber}
+          handleResetGame={this.handleResetGame}
+          handleSelectNumber={this.handleSelectNumber}
+          {...this.state}
+        />
+        {isFirstGame && <StartFrame handleStartGame={this.handleStartGame} />}
         <br />
         <HowToPlay />
       </div>
