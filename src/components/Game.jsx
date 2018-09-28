@@ -5,6 +5,7 @@ import Button from './Button';
 import Answer from './Answer';
 import Numbers from './Numbers';
 import DoneFrame from './DoneFrame';
+import HowToPlay from './HowToPlay';
 import possibleCombinationSum from '../helpers/possibleCombinationSum';
 
 /**
@@ -215,6 +216,7 @@ class Game extends Component {
           />
         </div>
         <br />
+        <br />
         {doneStatus
           ? (
             <DoneFrame
@@ -230,6 +232,8 @@ class Game extends Component {
             />
           )
         }
+        <br />
+        <HowToPlay />
       </div>
     );
   }

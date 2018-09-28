@@ -16,6 +16,21 @@ const propTypes = {
  */
 const Answer = (props) => {
   const { selectedNumbers, handleUnselectNumber } = props;
+
+  /**
+   * Handle unselecting a number with enter key
+   *
+   * @param {object} event - Event object
+   * @param {object} number - Number to unselect
+   *
+   * @returns {object} Unselects the number if enter key is pressed
+   */
+  const handleKeyUP = (event, number) => {
+    if (event.key === 'Enter') {
+      handleUnselectNumber(number);
+    }
+  };
+
   return (
     <div className="col-5">
       <div className="number">
@@ -23,9 +38,10 @@ const Answer = (props) => {
           <span
             role="button"
             tabIndex="0"
+            className="answer"
             key={index.toString()}
             onClick={() => handleUnselectNumber(number)}
-            onKeyUp={() => {}}
+            onKeyUp={event => handleKeyUP(event, number)}
           >
             {number}
           </span>
