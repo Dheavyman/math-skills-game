@@ -4,6 +4,10 @@
   "description": "Math skills game built with react",
   "main": "index.js",
   "scripts": {
+    "build:server": "babel ./src/server.js -d ./build",
+    "build:client": "webpack --mode production",
+    "heroku-postbuild": "npm run build:client && npm run build:server",
+    "start": "node ./build/src/server.js",
     "start:dev": "webpack-dev-server --mode=development --inline --hot"
   },
   "repository": "https://github.com/Dheavyman/math-skills-game.git",
@@ -32,8 +36,6 @@
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
@@ -42,6 +44,8 @@
     "morgan": "^1.9.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1"
   }
 }
