@@ -46,6 +46,7 @@ class Game extends Component {
     countdownRunning: false,
     minutes: 1,
     seconds: 0,
+    customTime: false,
   })
 
   state = Game.initialState();
@@ -72,10 +73,23 @@ class Game extends Component {
    *
    * @memberof Game
    */
-  handleResetGame = () => this.setState({
-    ...Game.initialState(),
-    isFirstGame: false,
-    countdownRunning: true,
+  handleResetGame = () => this.setState((prevState) => {
+    const { customTime } = prevState;
+
+    if (customTime) {
+      return {
+        ...Game.initialState(),
+        isFirstGame: false,
+        countdownRunning: true,
+        minutes: prevState.minutes,
+        seconds: prevState.seconds,
+      };
+    }
+    return {
+      ...Game.initialState(),
+      isFirstGame: false,
+      countdownRunning: true,
+    };
   }, this.startCountdown);
 
   /**
@@ -269,6 +283,36 @@ class Game extends Component {
   }
 
   /**
+   * Handle setting countdown time
+   *
+   * @param {object} event - Event object
+   *
+   * @returns {undefined} Change state
+   *
+   * @memberof Game
+   */
+  handleChangeTime = (event) => {
+    const { currentTarget: { name } } = event;
+    const { minutes, seconds } = this.state;
+    const time = (minutes * 60) + seconds;
+    let newCountdownTime;
+
+    if (name === 'increase') {
+      newCountdownTime = time + 1;
+    } else if (name === 'decrease') {
+      newCountdownTime = time <= 0 ? time : time - 1;
+    }
+
+    const newMinutes = Math.floor(newCountdownTime / 60);
+    const newSeconds = newCountdownTime - (newMinutes * 60);
+    this.setState({
+      minutes: newMinutes,
+      seconds: newSeconds,
+      customTime: true,
+    });
+  }
+
+  /**
    * Render method
    *
    * @returns {object} React element
@@ -276,12 +320,23 @@ class Game extends Component {
    * @memberof Game
    */
   render() {
-    const { isFirstGame, minutes, seconds } = this.state;
+    const {
+      isFirstGame,
+      minutes,
+      seconds,
+      countdownRunning
+    } = this.state;
+
     return (
       <div className="container">
         <div className="row header">
           <h2 className="col-8 col-md-9 logo">Play Nine</h2>
-          <TimerFrame minutes={minutes} seconds={seconds} />
+          <TimerFrame
+            minutes={minutes}
+            seconds={seconds}
+            countdownRunning={countdownRunning}
+            handleChangeTime={this.handleChangeTime}
+          />
         </div>
         <hr />
         <GameFrame
@@ -294,7 +349,6 @@ class Game extends Component {
           {...this.state}
         />
         {isFirstGame && <StartFrame handleStartGame={this.handleStartGame} />}
-        <br />
         <HowToPlay />
       </div>
     );

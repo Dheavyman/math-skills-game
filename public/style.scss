@@ -54,6 +54,8 @@ button:disabled {
 
 .how-to-play {
   li {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.875rem;
     margin-top: 0.625rem;
   }
 
@@ -68,8 +70,25 @@ button:disabled {
 }
 
 .timer {
+  h3 {
+    display: inline-block;
+  }
+
   .minutes, .seconds {
     font-family: 'Roboto Condensed', sans-serif;
     margin-right: 0.3125rem;
+  }
+
+  .minutes-sign, .seconds-sign {
+    font-size: 1.375rem;
+  }
+
+  .set-time {
+    margin-left: 0.625rem;
+    margin-top: -0.625rem;
+
+    button {
+      background-color: #ffffff;
+    }
   }
 }

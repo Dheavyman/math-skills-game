@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 const propTypes = {
   minutes: PropTypes.number.isRequired,
   seconds: PropTypes.number.isRequired,
+  countdownRunning: PropTypes.bool.isRequired,
+  handleChangeTime: PropTypes.func.isRequired,
 };
 
 /**
@@ -14,7 +16,12 @@ const propTypes = {
  * @returns {object} React element
  */
 const TimerFrame = (props) => {
-  const { minutes, seconds } = props;
+  const {
+    minutes,
+    seconds,
+    countdownRunning,
+    handleChangeTime
+  } = props;
 
   /**
    * Format time
@@ -30,16 +37,40 @@ const TimerFrame = (props) => {
 
   return (
     <div className="col-4 col-md-3">
-      <h3 className="timer">
-        <span className="minutes text-justify">
-          {minutes}
-          <span>m</span>
-        </span>
-        <span className="seconds text-justify">
-          {formatTime(seconds)}
-          <span>s</span>
-        </span>
-      </h3>
+      <div className="timer">
+        <h3>
+          <span className="minutes text-justify">
+            {minutes}
+            <span className="minutes-sign">m</span>
+          </span>
+          <span className="seconds text-justify">
+            {formatTime(seconds)}
+            <span className="seconds-sign">s</span>
+          </span>
+        </h3>
+        {!countdownRunning
+          && (
+          <div className="btn-group-vertical set-time">
+            <button
+              type="button"
+              name="increase"
+              className="btn btn-sm"
+              onClick={handleChangeTime}
+            >
+              <i className="fa fa-angle-up" />
+            </button>
+            <button
+              type="button"
+              name="decrease"
+              className="btn btn-sm"
+              onClick={handleChangeTime}
+            >
+              <i className="fa fa-angle-down" />
+            </button>
+          </div>
+          )
+        }
+      </div>
     </div>
   );
 };
