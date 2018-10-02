@@ -5,6 +5,7 @@ const propTypes = {
   selectedNumbers: PropTypes.arrayOf(PropTypes.number).isRequired,
   isAnswerCorrect: PropTypes.bool,
   redraws: PropTypes.number.isRequired,
+  countdownRunning: PropTypes.bool.isRequired,
   handleCheckAnswer: PropTypes.func.isRequired,
   handleAcceptAnswer: PropTypes.func.isRequired,
   handleRedraw: PropTypes.func.isRequired,
@@ -26,6 +27,7 @@ const Button = (props) => {
     selectedNumbers,
     isAnswerCorrect,
     redraws,
+    countdownRunning,
     handleCheckAnswer,
     handleAcceptAnswer,
     handleRedraw,
@@ -60,7 +62,7 @@ const Button = (props) => {
           type="button"
           className="btn btn-secondary btn-lg"
           onClick={handleCheckAnswer}
-          disabled={selectedNumbers.length === 0}
+          disabled={!countdownRunning || selectedNumbers.length === 0}
         >
         =
         </button>
@@ -75,7 +77,7 @@ const Button = (props) => {
         type="button"
         className="btn btn-warning btn-sm"
         onClick={handleRedraw}
-        disabled={redraws <= 0}
+        disabled={!countdownRunning || redraws <= 0}
       >
         <i className={`fa fa-sync-alt ${redraws > 0 && 'fa-spin'}`} />
         {`  ${redraws}`}

@@ -23,6 +23,7 @@ const DoneFrame = (props) => {
   return (
     <div className="text-center">
       <h2>{doneStatus}</h2>
+      <br />
       <button
         type="button"
         className="btn btn-info"
