@@ -13,6 +13,10 @@ app.get('*', (req, res) => {
 
 app.set('port', process.env.PORT || 5500);
 
-app.listen(app.get('port'), () => {
+app.listen(app.get('port'), (error) => {
+  if (error) {
+    console.log(error.message); // eslint-disable-line no-console
+  }
+  // eslint-disable-next-line no-console
   console.log(`Server running on port ${app.get('port')}`);
 });
