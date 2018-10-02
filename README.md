@@ -29,9 +29,9 @@ Follow the steps below to get the application running locally:
 ```
 
 ## Built with
-NodeJs
-Express
-React
+NodeJs  
+Express  
+React  
 
 ## Licence
 This project is available for use and modification under the MIT License. See the LICENSE file or click [here](https://github.com/Dheavyman/math-skills-game/blob/develop/LICENSE) for more details.
