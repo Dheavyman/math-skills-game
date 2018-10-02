@@ -207,12 +207,14 @@ class Game extends Component {
         return {
           doneStatus: 'Done, Nice!',
           countdownRunning: false,
+          customTime: false,
         };
       }
       if (prevState.redraws === 0 && !this.possibleSolutions(prevState)) {
         return {
           doneStatus: 'Game Over!',
           countdownRunning: false,
+          customTime: false,
         };
       }
       if (!prevState.countdownRunning) {
