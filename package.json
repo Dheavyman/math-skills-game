@@ -6,7 +6,7 @@
   "scripts": {
     "build:server": "babel ./src/server.js -d ./build",
     "build:client": "webpack --mode production",
-    "heroku-postbuild": "npm run build:client && npm run build:server",
+    "heroku-postbuild": "yarn build:client && yarn build:server",
     "start": "node ./build/src/server.js",
     "start:dev": "webpack-dev-server --mode=development --inline --hot"
   },
