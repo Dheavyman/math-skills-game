@@ -82,13 +82,17 @@ button:disabled {
   .minutes-sign, .seconds-sign {
     font-size: 1.375rem;
   }
+}
 
-  .set-time {
-    margin-left: 0.625rem;
-    margin-top: -0.625rem;
+.set-time {
+  margin-left: 0.625rem;
+  margin-top: -0.625rem;
 
-    button {
-      background-color: #ffffff;
-    }
+  button {
+    background-color: #ffffff;
+  }
+
+  button:hover {
+    color: #0074D9;
   }
 }

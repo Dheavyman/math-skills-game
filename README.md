@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/ed5a3c28e956e3f05642/maintainability)](https://codeclimate.com/github/Dheavyman/math-skills-game/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ed5a3c28e956e3f05642/test_coverage)](https://codeclimate.com/github/Dheavyman/math-skills-game/test_coverage)
+
 # math-skills-game
 A fun game where you showcase your basic mathematical skills
 
