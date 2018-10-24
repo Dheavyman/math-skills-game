@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Done frame component should render component successfully 1`] = `
+<div
+  className="text-center"
+>
+  <h2>
+    Game Over
+  </h2>
+  <br />
+  <button
+    className="btn btn-info"
+    onClick={[MockFunction]}
+    type="button"
+  >
+    Play Again
+  </button>
+</div>
+`;

@@ -18,7 +18,7 @@ const Stars = (props) => {
   return (
     <div className="col-5">
       {Array.from({ length: numberOfStars }, (_, index) => index + 1).map(
-        (star, index) => (
+        (_, index) => (
           <i key={index.toString()} className="fa fa-star" />
         )
       )}

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Timer frame component should render component successfully 1`] = `
+<div
+  className="col-4 col-md-3"
+>
+  <div
+    className="timer"
+  >
+    <h3>
+      <span
+        className="minutes text-justify"
+      >
+        2
+        <span
+          className="minutes-sign"
+        >
+          m
+        </span>
+      </span>
+      <span
+        className="seconds text-justify"
+      >
+        08
+        <span
+          className="seconds-sign"
+        >
+          s
+        </span>
+      </span>
+    </h3>
+    <div
+      className="btn-group-vertical set-time"
+    >
+      <button
+        className="btn btn-sm"
+        name="increase"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        <i
+          className="fa fa-angle-up"
+        />
+      </button>
+      <button
+        className="btn btn-sm"
+        name="decrease"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        <i
+          className="fa fa-angle-down"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

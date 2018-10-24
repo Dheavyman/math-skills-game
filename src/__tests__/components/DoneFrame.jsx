@@ -1,12 +1,15 @@
 import React from 'react';
-import ReactTestRenderer from 'react-test-renderer';
+import TestRenderer from 'react-test-renderer';
 
 import DoneFrame from '../../components/DoneFrame';
 
 describe('Done frame component', () => {
+  const props = {
+    doneStatus: 'Game Over',
+    handleResetGame: jest.fn()
+  };
   it('should render component successfully', async () => {
-    // const renderer = ReactTestRenderer
-    //   .create(<DoneFrame />);
-    expect(true).toEqual(true);
+    const renderer = TestRenderer.create(<DoneFrame {...props} />);
+    expect(renderer.toJSON()).toMatchSnapshot();
   });
 });

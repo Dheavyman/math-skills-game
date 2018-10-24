@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stars component should render component successfully 1`] = `
+<div
+  className="col-5"
+>
+  <i
+    className="fa fa-star"
+  />
+  <i
+    className="fa fa-star"
+  />
+  <i
+    className="fa fa-star"
+  />
+  <i
+    className="fa fa-star"
+  />
+</div>
+`;
