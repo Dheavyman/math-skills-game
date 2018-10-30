@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Answer component should render component successfully 1`] = `
+<div
+  className="col-5"
+>
+  <div
+    className="number"
+  >
+    <span
+      className="answer"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      2
+    </span>
+    <span
+      className="answer"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      7
+    </span>
+    <span
+      className="answer"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      9
+    </span>
+  </div>
+</div>
+`;

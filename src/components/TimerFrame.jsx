@@ -1,6 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Format time
+ * Add leading zero when value is less that 10
+ *
+ * @param {*} value - time to format
+ *
+ * @returns {object} Formatted time
+ */
+export const formatTime = value => (
+  value < 10 ? `0${value}` : `${value.toString()}`
+);
+
 const propTypes = {
   minutes: PropTypes.number.isRequired,
   seconds: PropTypes.number.isRequired,
@@ -22,18 +34,6 @@ const TimerFrame = (props) => {
     countdownRunning,
     handleChangeTime
   } = props;
-
-  /**
-   * Format time
-   * Add leading zero when value is less that 10
-   *
-   * @param {*} value - time to format
-   *
-   * @returns {object} Formatted time
-   */
-  const formatTime = value => (
-    value < 10 ? `0${value}` : `${value.toString()}`
-  );
 
   return (
     <div className="col-4 col-md-3">

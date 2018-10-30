@@ -16,7 +16,8 @@
   "env": {
     "node": true,
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "rules": {
     "max-len": [1, 80, 2],

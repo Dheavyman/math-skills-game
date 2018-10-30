@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should render the component with check button when answer is correct 1`] = `
+<div
+  className="col-2 check-btn text-center"
+>
+  <button
+    className="btn btn-success btn-lg"
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <i
+      className="fa fa-check"
+    />
+  </button>
+  <br />
+  <br />
+  <button
+    className="btn btn-warning btn-sm"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <i
+      className="fa fa-sync-alt fa-spin"
+    />
+      5
+  </button>
+</div>
+`;
+
+exports[`Button component should render the component with default button successfully 1`] = `
+<div
+  className="col-2 check-btn text-center"
+>
+  <button
+    className="btn btn-secondary btn-lg"
+    disabled={true}
+    onClick={[MockFunction]}
+    type="button"
+  >
+    =
+  </button>
+  <br />
+  <br />
+  <button
+    className="btn btn-warning btn-sm"
+    disabled={true}
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <i
+      className="fa fa-sync-alt fa-spin"
+    />
+      5
+  </button>
+</div>
+`;
+
+exports[`Button component should render the component with x(fa-times) button when answer is wrong 1`] = `
+<div
+  className="col-2 check-btn text-center"
+>
+  <button
+    className="btn btn-danger btn-lg"
+    type="button"
+  >
+    <i
+      className="fa fa-times"
+    />
+  </button>
+  <br />
+  <br />
+  <button
+    className="btn btn-warning btn-sm"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <i
+      className="fa fa-sync-alt fa-spin"
+    />
+      5
+  </button>
+</div>
+`;
+
+exports[`Button component should render the default button when no number has been selected and the
+    countdown is running 1`] = `
+<div
+  className="col-2 check-btn text-center"
+>
+  <button
+    className="btn btn-secondary btn-lg"
+    disabled={true}
+    onClick={[MockFunction]}
+    type="button"
+  >
+    =
+  </button>
+  <br />
+  <br />
+  <button
+    className="btn btn-warning btn-sm"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <i
+      className="fa fa-sync-alt fa-spin"
+    />
+      5
+  </button>
+</div>
+`;

@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game frame component should render component successfully 1`] = `
+Array [
+  <div
+    className="row mt-5"
+  >
+    <div
+      className="col-5"
+    >
+      <i
+        className="fa fa-star"
+      />
+      <i
+        className="fa fa-star"
+      />
+      <i
+        className="fa fa-star"
+      />
+    </div>
+    <div
+      className="col-2 check-btn text-center"
+    >
+      <button
+        className="btn btn-secondary btn-lg"
+        disabled={true}
+        onClick={[MockFunction]}
+        type="button"
+      >
+        =
+      </button>
+      <br />
+      <br />
+      <button
+        className="btn btn-warning btn-sm"
+        disabled={true}
+        onClick={[MockFunction]}
+        type="button"
+      >
+        <i
+          className="fa fa-sync-alt fa-spin"
+        />
+          5
+      </button>
+    </div>
+    <div
+      className="col-5"
+    >
+      <div
+        className="number"
+      />
+    </div>
+  </div>,
+  <br />,
+  <br />,
+  <div
+    className="card border-primary text-center mt-5"
+  >
+    <div
+      className="number"
+    >
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        1
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        2
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        3
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        4
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        5
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        6
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        7
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        8
+      </span>
+      <span
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        9
+      </span>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Game frame component should render component with doneStatus successfully 1`] = `
+Array [
+  <div
+    className="row mt-5"
+  >
+    <div
+      className="col-5"
+    >
+      <i
+        className="fa fa-star"
+      />
+      <i
+        className="fa fa-star"
+      />
+      <i
+        className="fa fa-star"
+      />
+    </div>
+    <div
+      className="col-2 check-btn text-center"
+    >
+      <button
+        className="btn btn-secondary btn-lg"
+        disabled={true}
+        onClick={[MockFunction]}
+        type="button"
+      >
+        =
+      </button>
+      <br />
+      <br />
+      <button
+        className="btn btn-warning btn-sm"
+        disabled={true}
+        onClick={[MockFunction]}
+        type="button"
+      >
+        <i
+          className="fa fa-sync-alt fa-spin"
+        />
+          5
+      </button>
+    </div>
+    <div
+      className="col-5"
+    >
+      <div
+        className="number"
+      />
+    </div>
+  </div>,
+  <br />,
+  <br />,
+  <div
+    className="text-center"
+  >
+    <h2>
+      Done, Nice!
+    </h2>
+    <br />
+    <button
+      className="btn btn-info"
+      onClick={[MockFunction]}
+      type="button"
+    >
+      Play Again
+    </button>
+  </div>,
+]
+`;
